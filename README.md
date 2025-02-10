@@ -18,12 +18,37 @@ bash install.sh
 
 ### How to run
 
+#### Test your own fortune
 ```bash
-gotexas
+gotexas me
 ```
 
 And you will get the answer like:
 
 ```
-Today is a lucky day for you! Go Texas!
+Today is a lucky day for you! GO TEXAS!
 ```
+
+#### Test your friends fortune
+
+```bash
+gotexas friend <friend's name> <friend's birthday DD_MM_YYYY>
+```
+And you will get the answer like:
+
+```
+Your friend has a bad day. GO TEXAS WITH THEM!
+```
+
+#### Want to get an explanation?
+
+Add an ```--explain``` or ```-e``` flag at the end!
+
+```bash
+gotexas me -e
+gotexas friend <friend's name> <friend's birthday DD_MM_YYYY> -e
+```
+
+
+
+
