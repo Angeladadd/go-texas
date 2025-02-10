@@ -1,4 +1,5 @@
 import sxtwl
+from datetime import datetime
 
 # 五行 mapping
 gan_wuxing = {'甲':'木','乙':'木','丙':'火','丁':'火','戊':'土','己':'土','庚':'金','辛':'金','壬':'水','癸':'水'}
@@ -19,6 +20,8 @@ def gan_zhi(date):
 def texas_fortune(date):
     _gan, _zhi = gan_zhi(date)
     gan, zhi = gan_wuxing[_gan], zhi_wuxing[_zhi]
+    _day_gan, _day_zhi = gan_zhi(datetime.now())
+    day_gan, day_zhi = gan_wuxing[_day_gan], zhi_wuxing[_day_zhi]
     elements = {
         'money': 0, # 正偏财星影响
         'decision': 0, # 印星影响
@@ -27,20 +30,20 @@ def texas_fortune(date):
     }
 
     # 财运分析（我克者为财）
-    elements['money'] += (25 if wuxing_relation[gan]['克'] == gan else 0)
-    elements['money'] += (15 if wuxing_relation[zhi]['克'] == zhi else 0)
+    elements['money'] += (25 if wuxing_relation[gan]['克'] == day_gan else 0)
+    elements['money'] += (15 if wuxing_relation[zhi]['克'] == day_zhi else 0)
 
     # 决策能力（生我者为印）
-    elements['decision'] += (20 if wuxing_relation[gan]['被生'] == gan else 0)
-    elements['decision'] += (10 if wuxing_relation[zhi]['被生'] == zhi else 0)
+    elements['decision'] += (20 if wuxing_relation[gan]['被生'] == day_gan else 0)
+    elements['decision'] += (10 if wuxing_relation[zhi]['被生'] == day_zhi else 0)
 
     # 风险控制（克我者为官杀）
-    elements['risk'] += (30 if wuxing_relation[gan]['被克'] == gan else 0)
-    elements['risk'] += (20 if wuxing_relation[zhi]['被克'] == zhi else 0)
+    elements['risk'] += (30 if wuxing_relation[gan]['被克'] == day_gan else 0)
+    elements['risk'] += (20 if wuxing_relation[zhi]['被克'] == day_zhi else 0)
 
     # 心理博弈（同我者为比劫）
-    elements['mental'] += (15 if wuxing_relation[gan] == gan else 0)
-    elements['mental'] += (10 if wuxing_relation[zhi] == zhi else 0)
+    elements['mental'] += (15 if wuxing_relation[gan] == day_gan else 0)
+    elements['mental'] += (10 if wuxing_relation[zhi] == day_zhi else 0)
 
     suitability = (
         elements['money'] * 0.4 +
