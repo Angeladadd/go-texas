@@ -32,7 +32,7 @@ Today is a lucky day for you! GO TEXAS!
 #### Test your friends fortune
 
 ```bash
-gotexas friend <friend's name> <friend's birthday DD_MM_YYYY>
+gotexas friend <friend's name> <friend's birthday DD-MM-YYYY>
 ```
 And you will get the answer like:
 
