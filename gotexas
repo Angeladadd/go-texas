@@ -1,5 +1,0 @@
-
-        #!/bin/bash
-
-        python3 /Users/sunchenge/Desktop/UCL/sideproj/go-texas/go_texas.py -s /Users/sunchenge/Desktop/UCL/sideproj/go-texas "$@"
-        
