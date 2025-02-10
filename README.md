@@ -5,7 +5,7 @@
 
 Run it, and you’ll get a clear answer
 
-Quick, fun, and possibly life-saving for your bankroll. Give it a shot!
+Quick, fun, and possibly life-saving for your bankroll. Give it a shot! ♥️♠️♦️♣️
 
 
 ### Install
