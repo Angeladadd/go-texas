@@ -11,9 +11,11 @@ from wuxing import texas_fortune
 happy_texas =  ['纳财', '出师', '庆赐']
 sad_texas = ['施恩', '入学']
 
-def get_lunar_advice(goodThing):
-    return (any([thing in goodThing for thing in happy_texas]) - any([thing in goodThing for thing in sad_texas])) >= 0
-
+def get_lunar_advice(lunar):
+    return (len([thing in lunar.goodThing for thing in happy_texas]) \
+            - len([thing in lunar.badThing for thing in happy_texas])) \
+            + len([thing in lunar.badThing for thing in sad_texas]) \
+            - len([thing in lunar.goodThing for thing in sad_texas]) >= 0
 def get_wuxing_advice(suitability):
     return suitability >= 5
 
@@ -49,7 +51,7 @@ def main():
     
     today = datetime.now()
     lunar = cnlunar.Lunar(today, godType='8char')
-    lunar_advice = get_lunar_advice(lunar.goodThing)
+    lunar_advice = get_lunar_advice(lunar)
     me_advice, friend_advice = False, False
     elements = {}
 
@@ -82,7 +84,9 @@ def main():
     
     if args.explain:
         print('Good thing for today:', lunar.goodThing)
+        print('Bad thing for today:', lunar.badThing)
         print('Texas fortune:', elements)
+        print(f'Lunar advice: {lunar_advice}, Wuxing advice: {get_wuxing_advice(suitability)}')
 
 
 if __name__ == '__main__':
