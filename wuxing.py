@@ -15,7 +15,7 @@ wuxing_relation = {
 def gan_zhi(date):
     y, m, d = date.year, date.month, date.day
     ganzhi = sxtwl.fromSolar(y, m, d).getDayGZ()
-    return gan_wuxing[ganzhi.tg], zhi_wuxing[ganzhi.dz]
+    return list(gan_wuxing.keys())[ganzhi.tg], list(zhi_wuxing.keys())[ganzhi.dz]
 
 def texas_fortune(date):
     _gan, _zhi = gan_zhi(date)
