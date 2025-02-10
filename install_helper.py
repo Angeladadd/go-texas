@@ -6,7 +6,7 @@ def main():
         file.write(f"""
         #!/bin/bash
 
-        python3 {cur_path}/go_texas.py -s {cur_path} "$@"
+        python3 {cur_path}/go_texas.py "$@"
         """)
 
 

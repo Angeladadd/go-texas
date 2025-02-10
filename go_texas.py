@@ -30,10 +30,9 @@ def main():
     friend_parser.add_argument('name', help='Friend\'s name')
     # it should be optional after we can predict 五行 by name
     friend_parser.add_argument('birthday', help='Friend\'s birthday')
-    parser.add_argument('-s', dest='source', help='Source file path')
     args = parser.parse_args()
 
-    config_path = os.path.join(args.source or os.curdir, 'config.json')
+    config_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'config.json')
     config = {}
     if os.path.exists(config_path):
         config = json.load(open(config_path))
