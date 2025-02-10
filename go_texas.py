@@ -5,14 +5,17 @@ import os
 import json
 from datetime import datetime
 import cnlunar
-from wuxing import texas_advice, texas_fortune
+from wuxing import texas_fortune
 
 
 happy_texas =  ['纳财', '出师', '庆赐']
 sad_texas = ['施恩', '入学']
 
 def get_lunar_advice(goodThing):
-    return any([thing in goodThing for thing in happy_texas]) - any([thing in goodThing for thing in sad_texas]) >= 0
+    return (any([thing in goodThing for thing in happy_texas]) - any([thing in goodThing for thing in sad_texas])) >= 0
+
+def get_wuxing_advice(suitability):
+    return suitability >= 5
 
 def main():
 
@@ -53,12 +56,12 @@ def main():
     if args.who == 'me':
         user_birthday = datetime.strptime(config['me']['birthday'], '%d-%m-%Y')
         suitability, elements = texas_fortune(user_birthday)
-        me_advice = lunar_advice and texas_advice(suitability)
+        me_advice = lunar_advice and get_wuxing_advice(suitability)
     elif args.who == 'friend':
         # TODO: save friend's birthday to config
         friend_birthday = datetime.strptime(args.birthday, '%d-%m-%Y')
         suitability, elements = texas_fortune(friend_birthday)
-        friend_advice = lunar_advice and texas_advice(suitability)
+        friend_advice = lunar_advice and get_wuxing_advice(suitability)
     else:
         print('Command unsupported: ', args.who)
 

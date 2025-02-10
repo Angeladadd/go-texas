@@ -53,9 +53,6 @@ def texas_fortune(date):
     )
     return max(0, min(100, suitability)), elements
 
-def texas_advice(suitability):
-    return suitability >= 50
-
 
 
 
